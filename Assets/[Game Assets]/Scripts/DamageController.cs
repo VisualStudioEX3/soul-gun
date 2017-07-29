@@ -1,0 +1,27 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DamageController : MonoBehaviour
+{
+    [SerializeField]
+    int _health = 1;
+
+    public int MaxHealth { get { return this._health; } }
+    public int CurrentHealth { get; private set; }
+
+    public System.Action<int> OnDamageReceived;
+    public System.Action OnDeath;
+
+    public void ApplyDamage(int damage)
+    {
+        this.CurrentHealth = (int)Mathf.Clamp(this.CurrentHealth - damage, 0f, this._health);
+
+        this.OnDamageReceived?.Invoke(damage);
+
+        if (this.CurrentHealth == 0)
+        {
+            this.OnDeath?.Invoke();
+        }
+    }
+}

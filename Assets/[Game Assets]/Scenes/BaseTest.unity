@@ -410,6 +410,51 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &384441008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 384441009}
+  - component: {fileID: 384441010}
+  m_Layer: 0
+  m_Name: Shoots
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &384441009
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 384441008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 455918563}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &384441010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 384441008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90f3d0a257686841a9e0d73aa80e25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabModel: {fileID: 114259524395620518, guid: 97a44004967583c419da189eaa1de615,
+    type: 2}
+  MaxInstances: 3
+  _iterableCycling: 0
+  Count: 0
 --- !u!1 &422503519
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +557,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 384441009}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -528,9 +574,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
   m_Mass: 2.7556
-  m_LinearDrag: 0
+  m_LinearDrag: 6
   m_AngularDrag: 0.05
-  m_GravityScale: 7
+  m_GravityScale: 18
   m_Material: {fileID: 6200000, guid: d135536b519bcd24b9d90b69e8eeddc7, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -573,6 +619,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _horizontalForce: 15
+  _shootCandence: 0.5
+  _shootSpeed: 1
+  _shootDamage: 1
+  _maxShoots: 3
+  _shootLifeTime: 1
+  _sourceShoot: {fileID: 0}
 --- !u!1 &995673972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +1053,8 @@ MonoBehaviour:
     Shoot:
       DefaultKey: 32
       AltKey: 306
+  Levels:
+  - {fileID: 102900000, guid: 998f76a402b709640852716aaca77e38, type: 3}
 --- !u!4 &2098921453
 Transform:
   m_ObjectHideFlags: 0
