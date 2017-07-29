@@ -22,28 +22,9 @@ public class PlayerController : MonoBehaviour
     {
         this._rigidBody.position += ((Vector2.right * Input.GetAxis("Horizontal")) * this._horizontalForce) * Time.deltaTime;
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
-            Physics2D.gravity = -this._initialGravity;
-            this._targetGravity = this._initialGravity.y / 3f;
+            Physics2D.gravity *= -1;
         }
-        else
-        {
-            Physics2D.gravity = this._initialGravity;
-            this._targetGravity = -this._initialGravity.y / 3f;
-        }
-
-        if (this._rigidBody.position.y > 0)
-        {
-            this._targetGravity = -this._initialGravity.y / 3f;
-        }
-
-        this._targetGravity = Mathf.Lerp(this._targetGravity, this._playerGravity, Time.deltaTime);
-        print(this._targetGravity);
-    }
-
-    private void FixedUpdate()
-    {
-        this._rigidBody.velocity += Vector2.down * this._targetGravity;
     }
 }
