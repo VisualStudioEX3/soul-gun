@@ -7,9 +7,9 @@ public class PruebaOntrigger : MonoBehaviour {
 
    public GameObject Player;
    public SpriteRenderer visual;
-   public GameObject Explosion;
+  // public GameObject Explosion;
    public GameObject inicio;
-   public Collider2D box;
+   
 
 	// Use this for initialization
 	void Start () {
@@ -41,10 +41,10 @@ public class PruebaOntrigger : MonoBehaviour {
 
      // Player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
       visual.enabled = !visual.enabled;
-      Explosion.SetActive(true);
+      //Explosion.SetActive(true);
       yield return new WaitForSeconds(1);
       Player.transform.position = new Vector3(inicio.transform.position.x, inicio.transform.position.y, inicio.transform.position.z);
-      Explosion.SetActive(false);
+     //Explosion.SetActive(false);
       visual.enabled = !visual.enabled;
       //Player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
