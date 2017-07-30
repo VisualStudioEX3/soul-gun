@@ -26,12 +26,12 @@ public class DamageController : MonoBehaviour
     {
         this.CurrentHealth = (int)Mathf.Clamp(this.CurrentHealth - damage, 0f, this._health);
 
-        this.OnDamageReceivedEvent.Invoke(damage);
+        this.OnDamageReceivedEvent?.Invoke(damage);
         this.OnDamageReceived?.Invoke(damage);
 
         if (this.CurrentHealth == 0)
         {
-            this.OnDeadEvent.Invoke();
+           this.OnDeadEvent.Invoke();
             this.OnDead?.Invoke();
         }
     }

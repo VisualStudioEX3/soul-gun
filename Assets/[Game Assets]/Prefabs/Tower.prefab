@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bala: {fileID: 1448047780135140, guid: f4cf2a91d9069b54faedd7ebcd8e21a4, type: 2}
-  target: {fileID: 0}
+  target: {fileID: 1576282875418624, guid: d41af3133d06b414ba2349a6687095a5, type: 2}
   salida: {fileID: 4946923394991942}
   bulletSpeed: 5
   time_: 2
