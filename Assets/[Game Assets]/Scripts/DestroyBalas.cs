@@ -21,6 +21,7 @@ public class DestroyBalas : MonoBehaviour {
       
       GetComponent<SpriteRenderer>().enabled = false;
       particulas.SetActive(true);
+        GetComponent<BoxCollider2D>().enabled = false;
       
    }
 
