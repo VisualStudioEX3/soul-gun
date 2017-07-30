@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     ObjectPool _shootsPool;
     DamageController _damageController;
     Timer _timer;
+    CameraFollowPlayer _cameraFollowPlayer;
 
     float _horizontalVelocity;
 
@@ -35,6 +36,9 @@ public class PlayerController : MonoBehaviour
     float _shootLifeTime = 1f;
     [SerializeField]
     Transform _sourceShoot;
+
+    public Transform ReSpawn;
+    public GameObject particulas;
 
     public UnityEvent OnDeadEvent;
 
@@ -120,5 +124,16 @@ public class PlayerController : MonoBehaviour
     {
         this.IsDead = true;
         this.OnDeadEvent?.Invoke();
+
+        Invoke("Reaparecer", 2f);
+    }
+
+    public void Reaparecer()
+    {
+        this.transform.position = this.ReSpawn.position;
+        GetComponent<SpriteRenderer>().enabled = true;
+        this.particulas.SetActive(false);
+        this.IsDead = false;
+        this._damageController.CurrentHealth = this._damageController.MaxHealth;
     }
 }
