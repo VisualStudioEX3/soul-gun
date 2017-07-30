@@ -33,8 +33,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    AudioSource _mainMenuMusic;
+
     public InputMap Input;
-    public Object[] Levels;
 
     private void Reset()
     {
@@ -45,5 +46,14 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         GameManager.Instance = this;
+
+        this._mainMenuMusic = GetComponent<AudioSource>();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    }
+
+    public void StopMainMenuMusic()
+    {
+        this._mainMenuMusic.Stop();
     }
 }

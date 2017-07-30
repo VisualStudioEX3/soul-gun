@@ -126,6 +126,8 @@
     <Compile Include="Assets\[Game Assets]\Scripts\GameManager.cs" />
     <Compile Include="Assets\[Game Assets]\Scripts\LifeEnergyBehaviour.cs" />
     <Compile Include="Assets\[Game Assets]\Scripts\LookAtTower.cs" />
+    <Compile Include="Assets\[Game Assets]\Scripts\MainMenu\MainMenu00.cs" />
+    <Compile Include="Assets\[Game Assets]\Scripts\MainMenu\MainMenu01.cs" />
     <Compile Include="Assets\[Game Assets]\Scripts\PlayerController.cs" />
     <Compile Include="Assets\[Game Assets]\Scripts\PruebaOntrigger.cs" />
     <Compile Include="Assets\[Game Assets]\Scripts\tower.cs" />

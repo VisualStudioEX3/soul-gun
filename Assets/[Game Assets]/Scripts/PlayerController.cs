@@ -40,6 +40,12 @@ public class PlayerController : MonoBehaviour
     public Transform ReSpawn;
     public GameObject particulas;
 
+    public Transform EyeFeedbackTransform;
+    public Sprite[] EyeFeedbackLevels;
+    public ParticleSystem WeaponOverHeatFeedback;
+
+    public bool IsInMainMenu = false;
+
     public UnityEvent OnDeadEvent;
 
     public bool IsDead { get; private set; }
@@ -62,6 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         this.UpdateMovement();
         this.CheckInputShoot();
+        this.UpdateEnerygyFeedback();
     }
 
     private void FixedUpdate()
@@ -71,9 +78,49 @@ public class PlayerController : MonoBehaviour
         this._rigidBody.velocity = currentVelocity;
     }
 
+    void UpdateEnerygyFeedback()
+    {
+        float energyPercent = (float)this._damageController.CurrentHealth / (float)this._damageController.MaxHealth;
+
+        var eye = this.EyeFeedbackTransform.gameObject.GetComponent<SpriteRenderer>();
+
+        if (energyPercent <= 0.1f)
+        {
+            eye.sprite = this.EyeFeedbackLevels[1];
+        }
+        else if (energyPercent <= 0.25f)
+        {
+            eye.sprite = this.EyeFeedbackLevels[2];
+        }
+        else if (energyPercent <= 0.5f)
+        {
+            eye.sprite = this.EyeFeedbackLevels[3];
+        }
+        else if (energyPercent <= 0.75f)
+        {
+            eye.sprite = this.EyeFeedbackLevels[4];
+        }
+        else
+        {
+            eye.sprite = this.EyeFeedbackLevels[5];
+        }
+
+        try
+        {
+            var main = this.WeaponOverHeatFeedback.main;
+            var color = main.startColor.color;
+            color.a = Mathf.Abs(energyPercent - 1f);
+            main.startColor = color;
+        }
+        catch (System.Exception)
+        {
+            //Debug.LogError("Not weapon overheat particle found.");
+        }
+    }
+
     void UpdateMovement()
     {
-        if (this.IsDead) return;
+        if (this.IsDead || this.IsInMainMenu) return;
 
         if (GameManager.Instance.Input.MoveLeft.IsPressed)
         {
@@ -103,6 +150,12 @@ public class PlayerController : MonoBehaviour
             Physics2D.gravity *= -1;
             this._sprite.flipY = !this._sprite.flipY;
 
+            var currentPosition = this.EyeFeedbackTransform.localPosition;
+            currentPosition.y *= -1f;
+            this.EyeFeedbackTransform.localPosition = currentPosition;
+
+            this.EyeFeedbackTransform.gameObject.GetComponent<SpriteRenderer>().flipX = this._sprite.flipX;
+
             if (this._timer.Value >= this._shootCandence)
             {
                 this._timer.Reset();
@@ -131,7 +184,7 @@ public class PlayerController : MonoBehaviour
     public void Reaparecer()
     {
         this.transform.position = this.ReSpawn.position;
-        GetComponent<SpriteRenderer>().enabled = true;
+        this._sprite.enabled = true;
         this.particulas.SetActive(false);
         this.IsDead = false;
         this._damageController.CurrentHealth = this._damageController.MaxHealth;
