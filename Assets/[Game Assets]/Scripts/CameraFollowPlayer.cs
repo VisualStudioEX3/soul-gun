@@ -9,8 +9,7 @@ public class CameraFollowPlayer : MonoBehaviour
     float _cameraZ;
     Vector3 _finalOffSet;
 
-    [SerializeField]
-    float _speed = 5f;
+    public float _speed = 5f;
     [SerializeField]
     float _offSet = 2.5f;
 
