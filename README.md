@@ -1,6 +1,6 @@
 # Malaga Jam Week VI - Soul Gun #
 
-https://portfolio.visualstudioex3.com/2017/07/30/soul-gun/
+https://visualstudioex3.com/projects/soul-gun
 
 ![Soul Gun intro](https://i0.wp.com/portfolio.visualstudioex3.com/wp-content/uploads/2017/08/SoulGunLD1.gif?resize=474%2C296) ![Soul Gun gameplay](https://i2.wp.com/portfolio.visualstudioex3.com/wp-content/uploads/2017/08/SoulGunLD2.gif?resize=474%2C296)
 
